@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\DB;
 
 class Clientid
 {
@@ -15,9 +16,10 @@ class Clientid
      */
     public function handle($request, Closure $next)
     {
-    	$whitelist_clients = array();
+	    $client_id = $request->json()->get('client_id');
+	    $row = DB::table('clients')->where('client_id', $client_id)->first();
 
-    	if (!in_array($request->json()->get('client_id'), $whitelist_clients))
+    	if (!$row)
 	    {
 		    abort(403, 'Forbidden');
 	    }
