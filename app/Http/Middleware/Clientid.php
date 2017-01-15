@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Clients;
 use Closure;
 use Illuminate\Support\Facades\DB;
 
@@ -17,9 +18,9 @@ class Clientid
     public function handle($request, Closure $next)
     {
 	    $client_id = $request->json()->get('client_id');
-	    $row = DB::table('clients')->where('client_id', $client_id)->first();
+	    $row = Clients::where('client_id', $client_id)->first();
 
-    	if (!$row)
+		if (!$row)
 	    {
 		    abort(403, 'Forbidden');
 	    }
