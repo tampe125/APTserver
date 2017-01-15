@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use App\Clients;
 use Closure;
-use Illuminate\Support\Facades\DB;
 
 class Clientid
 {
@@ -22,7 +21,7 @@ class Clientid
 
 		if (!$row)
 	    {
-		    abort(403, 'Forbidden');
+	    	return response()->json(['error' => 'Forbidden'], 403);
 	    }
 
         return $next($request);
