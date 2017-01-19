@@ -36,7 +36,11 @@ class Main extends Controller
 				foreach ($commands as $command)
 				{
 					$ids[] = $command->id;
-					$response[] = $command->module.'|'.$command->command;
+					$response[] = [
+						'id'     => $command->id,
+						'module' => $command->module,
+						'cmd'    => $command->command
+					];
 				}
 
 				if ($ids)
