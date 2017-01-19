@@ -5,20 +5,19 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- *
  * @property    int     $id
+ * @property    string  $client_id
  * @property    string  $module
- * @property    string  $command
+ * @property    int     $command_id
+ * @property    string  $response
+ * @property    string  $created_at
  *
  */
-class Commands extends Model {
+class Responses extends Model {
 
     protected $fillable = [];
 
-    protected $dates = [
-    	'created_at',
-	    'sent_at'
-    ];
+    protected $dates = ["created_at"];
 
     public static $rules = [
         // Validation rules

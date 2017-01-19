@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,6 +23,6 @@ class Clients extends Model {
 
 	public function commands()
     {
-        return $this->hasMany('App\Command');
+        return $this->hasMany('App\Commands');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Commands;
+use App\Responses;
 use Illuminate\Http\Request;
 
 class Main extends Controller
@@ -62,13 +63,13 @@ class Main extends Controller
 				{
 					$report = json_decode($report);
 
-					Commands::where('client_id', $client_id)
-							->where('module', $report->module)
-							->where('command', $report->cmd)
-							->update(
-								['result' => $report->result],
-								['response_at' => date('Y-m-d H:i:s')]
-							);
+					Responses::create([
+						'client_id'  => $client_id,
+						'module'     => $report->module,
+						'command_id' => $report->cmd_id,
+						'result'     => $report->result,
+						'created_at' => date('Y-m-d H:i:s')
+					]);
 				}
 
 				return response()->json('');
