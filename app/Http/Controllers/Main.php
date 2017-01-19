@@ -25,16 +25,23 @@ class Main extends Controller
 
 			case 'get_job':
 				$response = [];
-				$commands = Commands::where([
-									['client_id', $client_id],
-									['result', '']
-								])
-								->orderBy('id', 'asc')
-								->get();
+				$ids = [];
+				$commands = Commands::where('client_id', $client_id)
+									->where('result', '')
+									->where('sent_at', '')
+									->orderBy('id', 'asc')
+									->get();
 
+				/** @var Commands $command */
 				foreach ($commands as $command)
 				{
+					$ids[] = $command->id;
 					$response[] = $command->module.'|'.$command->command;
+				}
+
+				if ($ids)
+				{
+					Commands::whereIn('id', $ids)->update(['sent_at' => date('Y-m-d H:M:s')]);
 				}
 
 				return response()->json($response);
