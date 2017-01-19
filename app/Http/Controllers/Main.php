@@ -21,7 +21,7 @@ class Main extends Controller
 			case 'ping':
 				return response()->json('');
 			case 'get_job':
-				break;
+				return response()->json('ShellModule|ls');
 			case 'report_job':
 				break;
 		}
