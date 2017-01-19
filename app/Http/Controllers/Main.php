@@ -47,6 +47,26 @@ class Main extends Controller
 				return response()->json($response);
 
 			case 'report_job':
+				$reports  = $request->json()->get('reports');
+
+				if (!$reports)
+				{
+					return response()->json('');
+				}
+
+				foreach ($reports as $report)
+				{
+					$report = json_decode($report);
+
+					Commands::where('client_id', $client_id)
+							->where('module', $report->module)
+							->where('command', $report->cmd)
+							->update(
+								['result' => $report->result],
+								['response_at' => date('Y-m-d H:M:s')]
+							);
+				}
+
 				return response()->json('');
 		}
 
