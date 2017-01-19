@@ -12,7 +12,14 @@ class Clients extends Model {
         // Validation rules
     ];
 
-    public function commands()
+    public function __construct(array $attributes = [])
+    {
+	    parent::__construct($attributes);
+
+	    $this->timestamps = false;
+    }
+
+	public function commands()
     {
         return $this->hasMany('App\Command');
     }

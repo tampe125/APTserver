@@ -15,8 +15,7 @@ class Commands extends Model {
 
     protected $dates = [
     	'created_at',
-	    'sent_at',
-	    'response_at'
+	    'sent_at'
     ];
 
     public static $rules = [
