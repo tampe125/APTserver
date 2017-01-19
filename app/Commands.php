@@ -20,10 +20,6 @@ class Commands extends Model {
 	    'sent_at'
     ];
 
-    public static $rules = [
-        // Validation rules
-    ];
-
     public function __construct(array $attributes = [])
     {
 	    parent::__construct($attributes);

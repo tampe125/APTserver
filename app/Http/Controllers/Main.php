@@ -28,7 +28,6 @@ class Main extends Controller
 				$response = [];
 				$ids = [];
 				$commands = Commands::where('client_id', $client_id)
-									->where('result', '')
 									->where('sent_at', '')
 									->orderBy('id', 'asc')
 									->get();
@@ -67,7 +66,7 @@ class Main extends Controller
 						'client_id'  => $client_id,
 						'module'     => $report->module,
 						'command_id' => $report->cmd_id,
-						'result'     => $report->result,
+						'response'   => $report->result,
 						'created_at' => date('Y-m-d H:i:s')
 					]);
 				}

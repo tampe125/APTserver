@@ -15,13 +15,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Responses extends Model {
 
-    protected $fillable = [];
+    protected $fillable = [
+    	'client_id',
+	    'module',
+	    'command_id',
+	    'response',
+	    'created_at'
+    ];
 
     protected $dates = ["created_at"];
-
-    public static $rules = [
-        // Validation rules
-    ];
 
     public function __construct(array $attributes = [])
     {
