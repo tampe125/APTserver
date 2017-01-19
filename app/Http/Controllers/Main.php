@@ -41,7 +41,7 @@ class Main extends Controller
 
 				if ($ids)
 				{
-					Commands::whereIn('id', $ids)->update(['sent_at' => date('Y-m-d H:M:s')]);
+					Commands::whereIn('id', $ids)->update(['sent_at' => date('Y-m-d H:i:s')]);
 				}
 
 				return response()->json($response);
@@ -63,7 +63,7 @@ class Main extends Controller
 							->where('command', $report->cmd)
 							->update(
 								['result' => $report->result],
-								['response_at' => date('Y-m-d H:M:s')]
+								['response_at' => date('Y-m-d H:i:s')]
 							);
 				}
 
