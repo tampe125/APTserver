@@ -65,7 +65,7 @@ class Main extends Controller
 					Responses::create([
 						'client_id'  => $client_id,
 						'module'     => $report->module,
-						'command_id' => $report->cmd_id,
+						'command_id' => isset($report->cmd_id) ? $report->cmd_id : 0,
 						'response'   => $report->result,
 						'created_at' => date('Y-m-d H:i:s')
 					]);
