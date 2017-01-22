@@ -16,6 +16,8 @@ class CreateSchema extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('client_id', 255);
+            $table->mediumText('priv_key');
+            $table->mediumText('pub_key');
         });
 
 	    Schema::create('commands', function (Blueprint $table) {
