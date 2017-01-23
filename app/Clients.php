@@ -4,6 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property    int     $id
+ * @property    string  $client_id
+ * @property    string  $priv_key
+ * @property    string  $pub_key
+ *
+ */
 class Clients extends Model {
 
     protected $fillable = ["client_id"];
