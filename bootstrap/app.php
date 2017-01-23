@@ -59,7 +59,8 @@ $app->singleton(
 */
 
 $app->middleware([
-   App\Http\Middleware\Decrypt::class
+   App\Http\Middleware\Decrypt::class,
+   App\Http\Middleware\Encrypt::class
 ]);
 
 // $app->routeMiddleware([
