@@ -28,7 +28,7 @@ class Main extends Controller
 				$response = [];
 				$ids = [];
 				$commands = Commands::where('client_id', $client_id)
-									->where('sent_at', '')
+									->where('sent_at', '0000-00-00 00:00:00')
 									->orderBy('id', 'asc')
 									->get();
 
