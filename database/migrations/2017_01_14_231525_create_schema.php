@@ -18,7 +18,7 @@ class CreateSchema extends Migration
             $table->string('client_id', 255);
             $table->mediumText('priv_key');
             $table->mediumText('pub_key');
-            $table->string('aes_key', 40);
+            $table->string('aes_key', 32);
         });
 
 	    Schema::create('commands', function (Blueprint $table) {

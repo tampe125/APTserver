@@ -42,7 +42,7 @@ class Main extends Controller
 				// No key? Let's create a new one on the fly
 				if (!$aes_key)
 				{
-					$aes_key = sha1(random_bytes(100));
+					$aes_key = md5(random_bytes(100));
 
 					$client->aes_key = $aes_key;
 					$client->save();
