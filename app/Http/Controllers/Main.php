@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Clients;
 use App\Commands;
 use App\Responses;
 use Illuminate\Http\Request;
@@ -19,10 +20,35 @@ class Main extends Controller
 		$task      = strtolower($request->json()->get('task'));
 		$client_id = $request->json()->get('client_id');
 
+		if (!$client_id)
+		{
+			return response()->json(['error' => 'Forbidden'], 403);
+		}
+
 		switch ($task)
 		{
 			case 'ping':
-				return response()->json('');
+				/** @var Clients $client */
+				$client = Clients::where('client_id', $client_id)->first();
+
+				// This should never happen, however...
+				if (!$client)
+				{
+					return response()->json(['error' => 'Forbidden'], 403);
+				}
+
+				$aes_key = $client->aes_key;
+
+				// No key? Let's create a new one on the fly
+				if (!$aes_key)
+				{
+					$aes_key = sha1(random_bytes(100));
+
+					$client->aes_key = $aes_key;
+					$client->save();
+				}
+
+				return response()->json([$aes_key]);
 
 			case 'get_job':
 				$response = [];
