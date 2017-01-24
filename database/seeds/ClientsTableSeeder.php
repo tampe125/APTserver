@@ -43,5 +43,11 @@ Nm4lyAoq5NiTv+gjSaQcMn4N8rScESlSAn/Wm4zbb8bXQZn9oG1eKw==
 			'priv_key'  => $priv_key,
 			'pub_key'   => $pub_key
 		]);
+
+		Clients::create([
+			'client_id' => 'S1D8VCGV',
+			'priv_key'  => $priv_key,
+			'pub_key'   => $pub_key
+		]);
 	}
 }
