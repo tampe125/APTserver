@@ -5,11 +5,15 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * Class Clients
+ *
  * @property    int     $id
  * @property    string  $client_id
  * @property    string  $priv_key
  * @property    string  $pub_key
+ * @property    string  $aes_key
  *
+ * @package App
  */
 class Clients extends Model {
 
