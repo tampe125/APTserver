@@ -19,4 +19,7 @@ $app->put('/', [
 
 
 // POST will handle all other tasks where data is encrypted using AES
-$app->post('/', 'Main@handle');
+$app->post('/', [
+	'middleware' => ['AESDecrypt', 'AESEncrypt'],
+	'uses'       => 'Main@handle'
+]);

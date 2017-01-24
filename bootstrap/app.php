@@ -65,6 +65,8 @@ $app->singleton(
 $app->routeMiddleware([
      'RSADecrypt' => App\Http\Middleware\RSADecrypt::class,
      'RSAEncrypt' => App\Http\Middleware\RSAEncrypt::class,
+	 'AESDecrypt' => App\Http\Middleware\AESDecrypt::class,
+     'AESEncrypt' => App\Http\Middleware\AESEncrypt::class,
 ]);
 
 /*
