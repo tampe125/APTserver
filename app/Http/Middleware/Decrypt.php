@@ -18,7 +18,7 @@ class Decrypt
      */
     public function handle($request, Closure $next)
     {
-    	$priv_key = base64_decode(env('APP_PRIVKEY'));
+    	$priv_key = config('apt.priv_key');
 
     	$data = $request->input();
 
