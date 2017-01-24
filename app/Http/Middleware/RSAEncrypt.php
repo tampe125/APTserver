@@ -57,6 +57,6 @@ class RSAEncrypt
 	    	$signature
 	    ));
 
-	    return $response;
+	    return $new_response;
     }
 }
