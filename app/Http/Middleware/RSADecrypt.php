@@ -7,7 +7,7 @@ use Closure;
 use phpseclib\Crypt\RSA;
 
 
-class Decrypt
+class RSADecrypt
 {
     /**
      * Handle an incoming request.

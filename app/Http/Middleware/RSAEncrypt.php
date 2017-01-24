@@ -7,7 +7,7 @@ use Closure;
 use Illuminate\Http\JsonResponse;
 use phpseclib\Crypt\RSA;
 
-class Encrypt
+class RSAEncrypt
 {
     /**
      * Handle an incoming request.

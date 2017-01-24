@@ -11,8 +11,12 @@
 |
 */
 
-$app->get('/', function () use ($app) {
-    return $app->version();
-});
+// PUT will handle exchanging the AES key using RSA
+$app->put('/', [
+	'middleware' => ['RSADecrypt', 'RSAEncrypt'],
+	'uses'       => 'Main@handle'
+]);
 
+
+// POST will handle all other tasks where data is encrypted using AES
 $app->post('/', 'Main@handle');

@@ -58,14 +58,14 @@ $app->singleton(
 |
 */
 
-$app->middleware([
-   App\Http\Middleware\Decrypt::class,
-   App\Http\Middleware\Encrypt::class
-]);
-
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
+// $app->middleware([
+//	App\Http\Middleware\Encrypt::class
 // ]);
+
+$app->routeMiddleware([
+     'RSADecrypt' => App\Http\Middleware\RSADecrypt::class,
+     'RSAEncrypt' => App\Http\Middleware\RSAEncrypt::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
