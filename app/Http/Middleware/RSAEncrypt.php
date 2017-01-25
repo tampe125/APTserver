@@ -26,6 +26,7 @@ class RSAEncrypt
 		    return response()->json(['error' => 'Forbidden'], 403);
 	    }
 
+	    /** @var Clients $client */
 	    $client = Clients::where('client_id', $client_id)->first();
 
     	// Again this should never happen...
@@ -37,7 +38,7 @@ class RSAEncrypt
 	    /** @var JsonResponse $response */
 	    $response = $next($request);
 
-	    // getData() will decode it, but we need a full string that will be encoded
+	    // getData() will decode it, but we need a full string that will be encrypted
 	    $raw_data = json_encode($response->getData());
 
 	    // First of all sign the data
