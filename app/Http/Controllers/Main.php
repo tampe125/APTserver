@@ -43,19 +43,13 @@ class Main extends Controller
 				// No key? Let's create a new one on the fly
 				if (!$aes_key)
 				{
-					$key = Key::createNewRandomKey();
-					$client->aes_key = $key->saveToAsciiSafeString();
-
+					$aes_key = md5(random_bytes(32));
+					$aes_key = base64_encode($aes_key);
+					$client->aes_key = $aes_key;
 					$client->save();
-					$raw_key = $key->getRawBytes();
-				}
-				else
-				{
-					$key = Key::loadFromAsciiSafeString($aes_key);
-					$raw_key = $key->getRawBytes();
 				}
 
-				return response()->json([base64_encode($raw_key)]);
+				return response()->json([$aes_key]);
 
 			case 'get_job':
 				$response = [];

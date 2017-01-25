@@ -6,6 +6,7 @@ use App\Clients;
 use Closure;
 use Defuse\Crypto\Crypto;
 use Defuse\Crypto\Key;
+use phpseclib\Crypt\AES;
 
 class AESDecrypt
 {
@@ -36,10 +37,17 @@ class AESDecrypt
 
 	    $client_id = 'WD-WCC3F7XK9Y9P';
 	    $client = Clients::where('client_id', $client_id)->first();
-	    $aes_key = Key::loadFromAsciiSafeString($client->aes_key);
+	    $aes_key = base64_decode($client->aes_key);
 
 	    // Decrypt
-	    $x = Crypto::legacyDecrypt($encrypted, $aes_key->getRawBytes());
+	    $cipher = new AES();
+	    $cipher->setKey($aes_key);
+
+	    $iv = mb_substr($encrypted, 0, 16);
+	    $ciphertext = mb_substr($encrypted, 16);
+	    $cipher->setIV($iv);
+
+	    $x = $cipher->decrypt($ciphertext);
 
         return $next($request);
     }
