@@ -52,9 +52,10 @@ class AESEncrypt
 	    // Then encrypt it
 	    $aes = new AES();
 	    $aes->setKey(base64_decode($client->aes_key));
-	    $aes->setIV(Random::string($aes->getBlockLength() >> 3));
+	    $iv = Random::string($aes->getBlockLength() >> 3);
+	    $aes->setIV($iv);
 
-	    $chipertext = base64_encode($aes->encrypt($raw_data));
+	    $chipertext = base64_encode($iv.$aes->encrypt($raw_data));
 
 	    $new_response = new JsonResponse(array(
 		    $chipertext,
