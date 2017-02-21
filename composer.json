@@ -11,7 +11,8 @@
         "wn/lumen-generators": "^1.2",
         "doctrine/dbal": "^2.5",
         "phpseclib/phpseclib": "^2.0",
-        "php-imap/php-imap": "~2.0"
+        "php-imap/php-imap": "~2.0",
+        "illuminate/mail": "^5.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

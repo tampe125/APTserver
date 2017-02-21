@@ -100,6 +100,7 @@ $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
 });
 
 $app->configure('apt');
+$app->configure('imap');
 $app->configure('mail');
 
 return $app;
