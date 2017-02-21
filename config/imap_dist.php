@@ -6,11 +6,5 @@ return [
 		'host'     => '',
 		'user'     => '',
 		'password' => ''
-	],
-	'smtp' => [
-		'host'     => '',
-		'port'     => '',
-		'user'     => '',
-		'password' => ''
 	]
 ];
