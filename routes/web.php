@@ -23,3 +23,7 @@ $app->post('/', [
 	'middleware' => ['AESDecrypt', 'AESEncrypt'],
 	'uses'       => 'Main@handle'
 ]);
+
+$app->get('/', function(){
+	return 'OK';
+});
