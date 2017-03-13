@@ -74,8 +74,16 @@ The raw reply is stored inside the `responses` table. You can get it by directly
 
 At the moment there's no application logic for database interaction, you have to issue your queries manually directly on the database.
 
+## Run the server
+You can install it in your own server or use PHP built-in server development using:
+```
+php -S localhost:8000 -t public
+```
+_Please note: remember to update the remote host inside the client, too_
+
+
 ## Required changes
 Most of the values are inside the configuration file, however some files need to be changed before getting the server ready.
 
 ### Change public and private keys
-Open [apt.php](https://github.com/tampe125/APTserver/blob/master/config/apt.php) file and change the public and private server. **Remember to update the hardcoded value in the client, too!**
+Open [apt.php](https://github.com/tampe125/APTserver/blob/master/config/apt.php) file and change the public and private server. _Remember to update the hardcoded value in the client, too!_
